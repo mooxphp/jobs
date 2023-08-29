@@ -8,7 +8,6 @@ Install the package via Composer:
 
 ```bash
 composer require adrolli/filament-job-manager
-php artisan vendor:publish --tag=filament-job-manager
 ```
 
 Create the necessary tables, if not using Redis as backend for queues:
@@ -75,23 +74,21 @@ return [
 ```
 
 
-
-You can publish and run the migrations with:
+You should publish and run the migrations with:
 
 ```
 php artisan vendor:publish --tag="filament-jobs-monitor-migrations"
 php artisan migrate
 ```
 
-
-
 ## Usage
 
 Just run a Background Job and go to the route `/admin/queue-monitors` to see the jobs.
 
 
+## Authorization - outdated! 
 
-### Authorization - outdated! Use Shield instead!
+Outdated. Use Shield instead.
 
 If you would like to prevent certain users from accessing your page, you should register a policy:
 
