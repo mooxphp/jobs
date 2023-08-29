@@ -4,7 +4,7 @@ namespace Adrolli\FilamentJobManager\Traits;
 
 use Adrolli\FilamentJobManager\Models\Job;
 
-trait QueueProgress
+trait JobProgress
 {
     /**
      * Update progress.
@@ -13,7 +13,7 @@ trait QueueProgress
     {
         $progress = min(100, max(0, $progress));
 
-        if (! $monitor = $this->getQueueMonitor()) {
+        if (! $monitor = $this->getJobMonitor()) {
             return;
         }
 
@@ -25,9 +25,9 @@ trait QueueProgress
     }
 
     /**
-     * Return Queue Monitor Model.
+     * Return Job Monitor Model.
      */
-    protected function getQueueMonitor(): ?Job
+    protected function getJobMonitor(): ?Job
     {
         if (! property_exists($this, 'job')) {
             return null;
