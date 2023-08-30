@@ -1,6 +1,8 @@
 # Filament Job Manager
 
-Work in progress. Should become a Filament panel for managing job queues including failed jobs and batches. Currently buggy as hell.
+Work in progress. Should become a Filament panel for managing job queues including failed jobs and batches. 
+
+Contains some bad bugs.
 
 ## Installation
 
@@ -10,16 +12,20 @@ Install the package via Composer:
 composer require adrolli/filament-job-manager
 ```
 
-Create the necessary tables, if not using Redis as backend for queues:
+Create the necessary tables:
 
 ```bash
+php artisan vendor:publish --tag="filament-job-manager-migrations"
+
+# Queue tables, if using the database driver instead of Redis queue backend
 php artisan queue:table
 php artisan queue:failed-table
 php artisan queue:batches-table
+
 php artisan migrate
 ```
 
-You can publish the config file with:
+Publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag="filament-job-manager-config"
@@ -71,11 +77,40 @@ return [
 
 ```
 
-You should publish and run the migrations with:
+Register the Plugins in `app/Providers/Filament/AdminPanelProvider.php`:
 
-```bash
-php artisan vendor:publish --tag="filament-job-manager-migrations"
-php artisan migrate
+```php
+    ->plugins([
+	FilamentJobManagerPlugin::make(),
+	FilamentFailedJobsPlugin::make(),
+	FilamentJobBatchesPlugin::make(),
+    ])
+```
+
+You don't need to register all Resources. If you don't use Job Batches, you can hide this feature by not registering it. 
+Instead of publishing and modifying the config-file, you can also do all settings in AdminPanelProvider like so:
+
+```php
+    ->plugins([
+	FilamentJobManagerPlugin::make()
+	    ->label('Job runs')
+	    ->pluralLabel('Jobs that seems to run')
+	    ->enableNavigation(true)
+	    ->navigationIcon('heroicon-o-face-smile')
+	    ->navigationGroup('My Jobs and Queues')
+	    ->navigationSort(5)
+	    ->navigationCountBadge(true)
+	    ->enablePruning(true)
+	    ->pruningRetention(7),
+	FilamentFailedJobsPlugin::make()
+	    ->label('Job failed')
+	    ->pluralLabel('Jobs that failed hard')
+	    ->enableNavigation(true)
+	    ->navigationIcon('heroicon-o-face-frown')
+	    ->navigationGroup('My Jobs and Queues')
+	    ->navigationSort(5)
+	    ->navigationCountBadge(true)
+    ])
 ```
 
 ## Usage
