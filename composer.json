@@ -39,10 +39,10 @@
         "laravel": {
             "providers": [
                 "Adrolli\\FilamentJobManager\\FilamentJobManagerServiceProvider",
-                "Adrolli\\FilamentJobManager\\JobMonitorProvider"
+                "Adrolli\\FilamentJobManager\\JobManagerProvider"
             ],
             "aliases": {
-                "JobMonitor": "Adrolli\\FilamentJobManager\\JobMonitorProvider\\Facade"
+                "JobMonitor": "Adrolli\\FilamentJobManager\\JobManagerProvider\\Facade"
             }
         }
     },
