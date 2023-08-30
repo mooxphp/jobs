@@ -4,6 +4,8 @@ Filament panel for managing job queues including failed jobs and batches.
 
 ## Installation
 
+This Laravel package is made for Filament 3 and the awesome TALL-Stack.
+
 Install the package via Composer:
 
 ```bash
