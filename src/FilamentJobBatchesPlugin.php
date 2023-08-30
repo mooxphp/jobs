@@ -288,6 +288,6 @@ class FilamentJobBatchesPlugin implements Plugin
      */
     public function getBreadcrumb(): string
     {
-        return __('filament-job-batches::translations.breadcrumb');
+        return __('filament-job-manager::translations.breadcrumb');
     }
 }
