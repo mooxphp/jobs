@@ -215,8 +215,7 @@ This Filament Plugin is heavily inspired (uses concept and / or code) from:
 
 - https://github.com/croustibat/filament-jobs-monitor
 - https://gitlab.com/amvisor/filament-failed-jobs
-- https://github.com/husam-tariq/filament-database-schedule
 
-All under MIT License.
+Both under MIT License.
 A BIG thank you!!!
 to the authors.
