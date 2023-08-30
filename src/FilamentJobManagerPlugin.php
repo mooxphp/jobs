@@ -7,7 +7,7 @@ use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Filament\Support\Concerns\EvaluatesClosures;
 
-class FilamentJobsPlugin implements Plugin
+class FilamentJobManagerPlugin implements Plugin
 {
     use EvaluatesClosures;
 

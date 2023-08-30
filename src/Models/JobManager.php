@@ -13,6 +13,8 @@ class JobManager extends Model
 {
     use HasFactory, Prunable;
 
+    protected $table = 'job_manager';
+
     protected $fillable = [
         'job_id',
         'name',

@@ -7,7 +7,7 @@ use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Filament\Support\Concerns\EvaluatesClosures;
 
-class FilamentJobManagerPlugin implements Plugin
+class FilamentFailedJobsPlugin implements Plugin
 {
     use EvaluatesClosures;
 
@@ -66,7 +66,7 @@ class FilamentJobManagerPlugin implements Plugin
      */
     public function getId(): string
     {
-        return 'filament-job-manager';
+        return 'filament-failed-jobs';
     }
 
     /**

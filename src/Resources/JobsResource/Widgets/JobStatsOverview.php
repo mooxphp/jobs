@@ -2,7 +2,7 @@
 
 namespace Adrolli\FilamentJobManager\Resources\JobsResource\Widgets;
 
-use Adrolli\FilamentJobManager\Models\Job;
+use Adrolli\FilamentJobManager\Models\JobManager;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +17,7 @@ class JobStatsOverview extends BaseWidget
             DB::raw('AVG(2 - 1) as average_time_elapsed'),
         ];
 
-        $aggregatedInfo = Job::query()
+        $aggregatedInfo = JobManager::query()
             ->select($aggregationColumns)
             ->first();
 

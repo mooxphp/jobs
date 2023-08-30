@@ -9,11 +9,10 @@ class FilamentJobManagerServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
-        $package->name('filament-job-manager');
-
-        $this->publishes([
-            __DIR__.'/../config/filament-job-manager.php' => config_path('filament-job-manager.php'),
-        ], 'filament-job-manager');
+        $package->name('filament-job-manager')
+            ->hasConfigFile()
+            ->hasTranslations()
+            ->hasMigration('create_filament-job-manager_table');
 
     }
 }
