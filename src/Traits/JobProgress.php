@@ -2,7 +2,7 @@
 
 namespace Adrolli\FilamentJobManager\Traits;
 
-use Adrolli\FilamentJobManager\Models\Job;
+use Adrolli\FilamentJobManager\Models\JobManager;
 
 trait JobProgress
 {
@@ -27,7 +27,7 @@ trait JobProgress
     /**
      * Return Job Monitor Model.
      */
-    protected function getJobMonitor(): ?Job
+    protected function getJobMonitor(): ?JobManager
     {
         if (! property_exists($this, 'job')) {
             return null;
@@ -37,11 +37,11 @@ trait JobProgress
             return null;
         }
 
-        if (! $jobId = Job::getJobId($this->job)) {
+        if (! $jobId = JobManager::getJobId($this->job)) {
             return null;
         }
 
-        $model = Job::getModel();
+        $model = JobManager::getModel();
 
         return $model::whereJobId($jobId)
             ->orderBy('started_at', 'desc')

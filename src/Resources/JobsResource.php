@@ -21,51 +21,6 @@ class JobsResource extends Resource
 {
     protected static ?string $model = JobManager::class;
 
-    public static function getNavigationBadge(): ?string
-    {
-        return FilamentJobManagerPlugin::get()->getNavigationCountBadge() ? number_format(static::getModel()::count()) : null;
-    }
-
-    public static function getModelLabel(): string
-    {
-        return FilamentJobManagerPlugin::get()->getLabel();
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return FilamentJobManagerPlugin::get()->getPluralLabel();
-    }
-
-    public static function getNavigationLabel(): string
-    {
-        return Str::title(static::getPluralModelLabel()) ?? Str::title(static::getModelLabel());
-    }
-
-    public static function getNavigationGroup(): ?string
-    {
-        return FilamentJobManagerPlugin::get()->getNavigationGroup();
-    }
-
-    public static function getNavigationSort(): ?int
-    {
-        return FilamentJobManagerPlugin::get()->getNavigationSort();
-    }
-
-    public static function getBreadcrumb(): string
-    {
-        return FilamentJobManagerPlugin::get()->getBreadcrumb();
-    }
-
-    public static function shouldRegisterNavigation(): bool
-    {
-        return FilamentJobManagerPlugin::get()->shouldRegisterNavigation();
-    }
-
-    public static function getNavigationIcon(): string
-    {
-        return FilamentJobManagerPlugin::get()->getNavigationIcon();
-    }
-
     public static function form(Form $form): Form
     {
         return $form
@@ -142,5 +97,50 @@ class JobsResource extends Resource
         return [
             JobStatsOverview::class,
         ];
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return FilamentJobManagerPlugin::get()->getNavigationCountBadge() ? number_format(static::getModel()::count()) : null;
+    }
+
+    public static function getModelLabel(): string
+    {
+        return FilamentJobManagerPlugin::get()->getLabel();
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return FilamentJobManagerPlugin::get()->getPluralLabel();
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return Str::title(static::getPluralModelLabel()) ?? Str::title(static::getModelLabel());
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return FilamentJobManagerPlugin::get()->getNavigationGroup();
+    }
+
+    public static function getNavigationSort(): ?int
+    {
+        return FilamentJobManagerPlugin::get()->getNavigationSort();
+    }
+
+    public static function getBreadcrumb(): string
+    {
+        return FilamentJobManagerPlugin::get()->getBreadcrumb();
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return FilamentJobManagerPlugin::get()->shouldRegisterNavigation();
+    }
+
+    public static function getNavigationIcon(): string
+    {
+        return FilamentJobManagerPlugin::get()->getNavigationIcon();
     }
 }
