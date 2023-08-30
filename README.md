@@ -1,6 +1,6 @@
 # Filament Job Manager
 
-Work in progress. Should become a Filament panel for managing job queues including failed jobs and batches. 
+Work in progress. Should become a Filament panel for managing job queues including failed jobs and batches.
 
 Contains some bad bugs.
 
@@ -45,7 +45,7 @@ return [
             'navigation_group' => 'Job manager',
             'navigation_icon' => 'heroicon-o-cpu-chip',
             'navigation_sort' => 1,
-            'navigation_count_badge' => false,
+            'navigation_count_badge' => true,
             'resource' => Adrolli\FilamentJobManager\Resources\JobsResource::class,
         ],
         'failed_jobs' => [
@@ -55,7 +55,7 @@ return [
             'navigation_group' => 'Job manager',
             'navigation_icon' => 'heroicon-o-exclamation-circle',
             'navigation_sort' => 2,
-            'navigation_count_badge' => false,
+            'navigation_count_badge' => true,
             'resource' => Adrolli\FilamentJobManager\Resources\FailedJobsResource::class,
         ],
         'job_batches' => [
@@ -65,7 +65,7 @@ return [
             'navigation_group' => 'Job manager',
             'navigation_icon' => 'heroicon-o-inbox-stack',
             'navigation_sort' => 3,
-            'navigation_count_badge' => false,
+            'navigation_count_badge' => true,
             'resource' => Adrolli\FilamentJobManager\Resources\JobBatchesResource::class,
         ],
     ],
@@ -87,7 +87,8 @@ Register the Plugins in `app/Providers/Filament/AdminPanelProvider.php`:
     ])
 ```
 
-You don't need to register all Resources. If you don't use Job Batches, you can hide this feature by not registering it. 
+You don't need to register all Resources. If you don't use Job Batches, you can hide this feature by not registering it.
+
 Instead of publishing and modifying the config-file, you can also do all settings in AdminPanelProvider like so:
 
 ```php
