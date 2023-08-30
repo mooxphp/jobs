@@ -1,6 +1,6 @@
 {
     "name": "adrolli/filament-job-manager",
-    "description": "A Filament manager for job queues including failed jobs and batches.",
+    "description": "A Filament panel for managing job queues including failed jobs and batches.",
     "keywords": [
         "laravel",
         "filament",
@@ -42,7 +42,7 @@
                 "Adrolli\\FilamentJobManager\\JobMonitorProvider"
             ],
             "aliases": {
-                "JobMonitor": "Adrolli\\FilamentJobManager\\QueueMonitorProvider\\Facade"
+                "JobMonitor": "Adrolli\\FilamentJobManager\\JobMonitorProvider\\Facade"
             }
         }
     },

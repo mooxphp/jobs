@@ -21,15 +21,13 @@ php artisan migrate
 
 You can publish the config file with:
 
+```bash
+php artisan vendor:publish --tag="filament-job-manager-config"
 ```
-php artisan vendor:publish --tag="filament-jobs-monitor-config"
-```
-
-
 
 This is the content of the published config file:
 
-```
+```php
 <?php
 
 return [
@@ -73,20 +71,58 @@ return [
 
 ```
 
-
 You should publish and run the migrations with:
 
-```
-php artisan vendor:publish --tag="filament-jobs-monitor-migrations"
+```bash
+php artisan vendor:publish --tag="filament-job-manager-migrations"
 php artisan migrate
 ```
 
 ## Usage
 
-Just run a Background Job and go to the route `/admin/queue-monitors` to see the jobs.
+Just run a Background Job and go to the route `/admin/jobs` to see the jobs.
 
+## Example Job
 
-## Authorization - outdated! 
+You do not need to change anything in your Jobs to work with Filament Job Monitor. But especially for long running jobs you may find this example interesting:
+
+```php
+<?php
+
+namespace App\Jobs;
+
+use Adrolli\FilamentJobManager\Traits\JobProgress;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use
+class JobMonitorDemo implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, QueueProgress;
+
+    public function __construct()
+    {
+        //
+    }
+
+    public function handle()
+    {
+        $count = 0;
+        $steps = 10;
+        $final = 100;
+
+        while ($count < $final) {
+            $this->setProgress($count);
+            $count = $count + $steps;
+          	sleep(10);
+        }
+    }
+}
+```
+
+## Authorization - outdated!
 
 Outdated. Use Shield instead.
 

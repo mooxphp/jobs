@@ -24,6 +24,6 @@ class ListJobs extends ListRecords
 
     public function getTitle(): string
     {
-        return __('filament-jobs-monitor::translations.title');
+        return __('filament-job-manager::translations.title');
     }
 }

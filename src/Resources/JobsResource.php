@@ -3,7 +3,7 @@
 namespace Adrolli\FilamentJobManager\Resources;
 
 use Adrolli\FilamentJobManager\FilamentJobsPlugin;
-use Adrolli\FilamentJobManager\Models\Job;
+use Adrolli\FilamentJobManager\Models\JobManager;
 use Adrolli\FilamentJobManager\Resources\JobsResource\Pages\ListJobs;
 use Adrolli\FilamentJobManager\Resources\JobsResource\Widgets\JobStatsOverview;
 use Filament\Forms\Components\DateTimePicker;
@@ -19,7 +19,7 @@ use Illuminate\Support\Str;
 
 class JobsResource extends Resource
 {
-    protected static ?string $model = Job::class;
+    protected static ?string $model = JobManager::class;
 
     public static function getNavigationBadge(): ?string
     {
@@ -94,27 +94,27 @@ class JobsResource extends Resource
             ->columns([
                 TextColumn::make('status')
                     ->badge()
-                    ->label(__('filament-jobs-monitor::translations.status'))
+                    ->label(__('filament-job-manager::translations.status'))
                     ->sortable()
-                    ->formatStateUsing(fn (string $state): string => __("filament-jobs-monitor::translations.{$state}"))
+                    ->formatStateUsing(fn (string $state): string => __("filament-job-manager::translations.{$state}"))
                     ->color(fn (string $state): string => match ($state) {
                         'running' => 'primary',
                         'succeeded' => 'success',
                         'failed' => 'danger',
                     }),
                 TextColumn::make('name')
-                    ->label(__('filament-jobs-monitor::translations.name'))
+                    ->label(__('filament-job-manager::translations.name'))
                     ->sortable(),
                 TextColumn::make('queue')
-                    ->label(__('filament-jobs-monitor::translations.queue'))
+                    ->label(__('filament-job-manager::translations.queue'))
                     ->sortable(),
                 TextColumn::make('progress')
-                    ->label(__('filament-jobs-monitor::translations.progress'))
+                    ->label(__('filament-job-manager::translations.progress'))
                     ->formatStateUsing(fn (string $state) => "{$state}%")
                     ->sortable(),
-                // ProgressColumn::make('progress')->label(__('filament-jobs-monitor::translations.progress'))->color('warning'),
+                // ProgressColumn::make('progress')->label(__('filament-job-manager::translations.progress'))->color('warning'),
                 TextColumn::make('started_at')
-                    ->label(__('filament-jobs-monitor::translations.started_at'))
+                    ->label(__('filament-job-manager::translations.started_at'))
                     ->since()
                     ->sortable(),
             ])
