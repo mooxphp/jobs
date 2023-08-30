@@ -1,8 +1,6 @@
 # Filament Job Manager
 
-Work in progress. Should become a Filament panel for managing job queues including failed jobs and batches.
-
-Contains some bad bugs.
+Filament panel for managing job queues including failed jobs and batches.
 
 ## Installation
 
@@ -87,8 +85,6 @@ Register the Plugins in `app/Providers/Filament/AdminPanelProvider.php`:
     ])
 ```
 
-You don't need to register all Resources. If you don't use Job Batches, you can hide this feature by not registering it.
-
 Instead of publishing and modifying the config-file, you can also do all settings in AdminPanelProvider like so:
 
 ```php
@@ -113,6 +109,8 @@ Instead of publishing and modifying the config-file, you can also do all setting
 	    ->navigationCountBadge(true)
     ])
 ```
+
+You don't need to register all Resources. If you don't use Job Batches, you can hide this feature by not registering it, like in this example. The settings of Job Batches is identical to Failed Jobs, if you want to include it with individual settings.
 
 ## Usage
 
@@ -158,20 +156,22 @@ class JobMonitorDemo implements ShouldQueue
 }
 ```
 
-## Authorization - outdated!
+## Authorization
 
-Outdated. Use Shield instead.
+I use Filament Shield instead, so that code is not heavily tested. Please leave a feedback, if you struggle.
 
-If you would like to prevent certain users from accessing your page, you should register a policy:
+If you would like to prevent certain users from accessing your page, you can register a policy:
 
 ```php
-use App\Policies\FailedJobPolicy;
+use App\Policies\JobMonitorPolicy;
 use Adrolli\FilamentJobManager\Models\FailedJob;
 use Adrolli\FilamentJobManager\Models\JobBatch;
+use Adrolli\FilamentJobManager\Models\JobMonitor;
 
 class AuthServiceProvider extends ServiceProvider
 {
 	protected $policies = [
+		JobManager::class => JobManagerPolicy::class,
 		FailedJob::class => FailedJobPolicy::class,
 		JobBatch::class  => JobBatchPolicy::class,
 	];
@@ -195,7 +195,7 @@ class FailedJobPolicy
 }
 ```
 
-(same for JobPolicy and JobBatchPolicy, if necessary).
+same for FailedJobPolicy and JobBatchPolicy.
 
 This will prevent the navigation item(s) from being registered.
 
@@ -206,3 +206,15 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+## Credits
+
+This Filament Plugin is heavily inspired (uses concept and / or code) from:
+
+- https://github.com/croustibat/filament-jobs-monitor
+- https://gitlab.com/amvisor/filament-failed-jobs
+- https://github.com/husam-tariq/filament-database-schedule
+
+All under MIT License.
+A BIG thank you!!!
+to the authors.
