@@ -26,7 +26,7 @@ See all waiting Jobs queued, kill one or many:
 
 See all failed Jobs including details, retry or delete:
 
-![screenshot-details](/Users/alfdrollinger/GitHub/filament-job-manager/docs/screenshot-details.jpg)
+![screenshot-details](./docs/screenshot-details.jpg)
 
 ![screenshot-detail](./docs/screenshot-detail.jpg)
 
