@@ -1,6 +1,40 @@
+
+
+![filament-banner](./docs/filament-banner.jpg)
+
 # Filament Job Manager
 
 Filament panel for managing job queues including failed jobs and batches.
+
+## Features
+
+### Jobs
+
+Monitor your running and finished jobs:
+
+![screenshot-jobs](./docs/screenshot-jobs.jpg)
+
+This table includes auto-pruning (7 days retention, configurable).
+
+### Jobs waiting
+
+See all waiting Jobs queued, kill one or many:
+
+![screenshot-waiting](./docs/screenshot-waiting.jpg)
+
+### Jobs failed
+
+See all failed Jobs including details, retry or delete:
+
+![screenshot-details](/Users/alfdrollinger/GitHub/filament-job-manager/docs/screenshot-details.jpg)
+
+![screenshot-detail](./docs/screenshot-detail.jpg)
+
+### Job batches
+
+See your job batches, prune batches:
+
+![screenshot-batches](./docs/screenshot-batches.jpg)
 
 ## Installation
 
@@ -34,8 +68,6 @@ php artisan vendor:publish --tag="filament-job-manager-config"
 This is the content of the published config file:
 
 ```php
-<?php
-
 return [
     'resources' => [
         'jobs' => [
@@ -43,18 +75,28 @@ return [
             'label' => 'Job',
             'plural_label' => 'Jobs',
             'navigation_group' => 'Job manager',
-            'navigation_icon' => 'heroicon-o-cpu-chip',
+            'navigation_icon' => 'heroicon-o-play',
             'navigation_sort' => 1,
             'navigation_count_badge' => true,
             'resource' => Adrolli\FilamentJobManager\Resources\JobsResource::class,
+        ],
+        'jobs_waiting' => [
+            'enabled' => true,
+            'label' => 'Job waiting',
+            'plural_label' => 'Jobs waiting',
+            'navigation_group' => 'Job manager',
+            'navigation_icon' => 'heroicon-o-pause',
+            'navigation_sort' => 2,
+            'navigation_count_badge' => true,
+            'resource' => Adrolli\FilamentJobManager\Resources\WaitingJobsResource::class,
         ],
         'failed_jobs' => [
             'enabled' => true,
             'label' => 'Failed Job',
             'plural_label' => 'Failed Jobs',
             'navigation_group' => 'Job manager',
-            'navigation_icon' => 'heroicon-o-exclamation-circle',
-            'navigation_sort' => 2,
+            'navigation_icon' => 'heroicon-o-exclamation-triangle',
+            'navigation_sort' => 3,
             'navigation_count_badge' => true,
             'resource' => Adrolli\FilamentJobManager\Resources\FailedJobsResource::class,
         ],
@@ -64,7 +106,7 @@ return [
             'plural_label' => 'Job Batches',
             'navigation_group' => 'Job manager',
             'navigation_icon' => 'heroicon-o-inbox-stack',
-            'navigation_sort' => 3,
+            'navigation_sort' => 4,
             'navigation_count_badge' => true,
             'resource' => Adrolli\FilamentJobManager\Resources\JobBatchesResource::class,
         ],
@@ -74,14 +116,14 @@ return [
         'retention_days' => 7,
     ],
 ];
-
 ```
 
 Register the Plugins in `app/Providers/Filament/AdminPanelProvider.php`:
 
 ```php
     ->plugins([
-	FilamentJobManagerPlugin::make(),
+	FilamentJobsPlugin::make(),
+    FilamentWaitingJobsPlugin::make(),
 	FilamentFailedJobsPlugin::make(),
 	FilamentJobBatchesPlugin::make(),
     ])
@@ -91,7 +133,7 @@ Instead of publishing and modifying the config-file, you can also do all setting
 
 ```php
     ->plugins([
-	FilamentJobManagerPlugin::make()
+	FilamentJobsPlugin::make()
 	    ->label('Job runs')
 	    ->pluralLabel('Jobs that seems to run')
 	    ->enableNavigation(true)
@@ -101,6 +143,14 @@ Instead of publishing and modifying the config-file, you can also do all setting
 	    ->navigationCountBadge(true)
 	    ->enablePruning(true)
 	    ->pruningRetention(7),
+	FilamentWaitingJobsPlugin::make()
+	    ->label('Job waiting')
+	    ->pluralLabel('Jobs waiting in line')
+	    ->enableNavigation(true)
+	    ->navigationIcon('heroicon-o-calendar')
+	    ->navigationGroup('My Jobs and Queues')
+	    ->navigationSort(5)
+	    ->navigationCountBadge(true)
 	FilamentFailedJobsPlugin::make()
 	    ->label('Job failed')
 	    ->pluralLabel('Jobs that failed hard')
@@ -116,7 +166,12 @@ You don't need to register all Resources. If you don't use Job Batches, you can 
 
 ## Usage
 
-Just run a Background Job and go to the route `/admin/jobs` to see the jobs.
+Start your queue with `php artisan queue:work`, run a Background Job (use following example, if you need one) and go to the route
+
+-   `/admin/jobs` to see the jobs running and done
+-   `/admin/waiting-jobs` to see or delete waiting jobs
+-   `/admin/failed-jobs` to see, retry or delete failed jobs
+-   `/admin/job-batches` to see job batches, or prune the batch table
 
 ## Example Job
 
@@ -209,12 +264,18 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
+## Sponsors
+
+The initial development of this plugin was sponsored by [heco gmbh, Germany](https://heco.de). A huge thank you for investing in Open Source!
+
+If you use this plugin, please consider a small donation to keep this project under maintenance. Especially if it is a commercial project, it is pretty easy to calculate. A few bucks for a developer to build a great product or a hungry developer that produces bugs or - the worst case - needs to abandon the project. Yes, I am happy about every little sunshine in my wallet ;-)
+
 ## Credits
 
 This Filament Plugin is heavily inspired (uses concept and / or code) from:
 
-- https://github.com/croustibat/filament-jobs-monitor
-- https://gitlab.com/amvisor/filament-failed-jobs
+-   https://github.com/croustibat/filament-jobs-monitor
+-   https://gitlab.com/amvisor/filament-failed-jobs
 
 Both under MIT License.
 A BIG thank you!!!

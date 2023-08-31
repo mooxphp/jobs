@@ -1,6 +1,6 @@
 <?php
 
-namespace Adrolli\FilamentJobManager\Resources\JobsWaitingResource\Widgets;
+namespace Adrolli\FilamentJobManager\Resources\WaitingJobsResource\Widgets;
 
 use Adrolli\FilamentJobManager\Models\Job;
 use Adrolli\FilamentJobManager\Models\JobManager;

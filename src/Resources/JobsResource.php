@@ -2,7 +2,7 @@
 
 namespace Adrolli\FilamentJobManager\Resources;
 
-use Adrolli\FilamentJobManager\FilamentJobManagerPlugin;
+use Adrolli\FilamentJobManager\FilamentJobsPlugin;
 use Adrolli\FilamentJobManager\Models\JobManager;
 use Adrolli\FilamentJobManager\Resources\JobsResource\Pages\ListJobs;
 use Adrolli\FilamentJobManager\Resources\JobsResource\Widgets\JobStatsOverview;
@@ -102,17 +102,17 @@ class JobsResource extends Resource
 
     public static function getNavigationBadge(): ?string
     {
-        return FilamentJobManagerPlugin::get()->getNavigationCountBadge() ? number_format(static::getModel()::count()) : null;
+        return FilamentJobsPlugin::get()->getNavigationCountBadge() ? number_format(static::getModel()::count()) : null;
     }
 
     public static function getModelLabel(): string
     {
-        return FilamentJobManagerPlugin::get()->getLabel();
+        return FilamentJobsPlugin::get()->getLabel();
     }
 
     public static function getPluralModelLabel(): string
     {
-        return FilamentJobManagerPlugin::get()->getPluralLabel();
+        return FilamentJobsPlugin::get()->getPluralLabel();
     }
 
     public static function getNavigationLabel(): string
@@ -122,26 +122,26 @@ class JobsResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return FilamentJobManagerPlugin::get()->getNavigationGroup();
+        return FilamentJobsPlugin::get()->getNavigationGroup();
     }
 
     public static function getNavigationSort(): ?int
     {
-        return FilamentJobManagerPlugin::get()->getNavigationSort();
+        return FilamentJobsPlugin::get()->getNavigationSort();
     }
 
     public static function getBreadcrumb(): string
     {
-        return FilamentJobManagerPlugin::get()->getBreadcrumb();
+        return FilamentJobsPlugin::get()->getBreadcrumb();
     }
 
     public static function shouldRegisterNavigation(): bool
     {
-        return FilamentJobManagerPlugin::get()->shouldRegisterNavigation();
+        return FilamentJobsPlugin::get()->shouldRegisterNavigation();
     }
 
     public static function getNavigationIcon(): string
     {
-        return FilamentJobManagerPlugin::get()->getNavigationIcon();
+        return FilamentJobsPlugin::get()->getNavigationIcon();
     }
 }

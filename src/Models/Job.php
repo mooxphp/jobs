@@ -9,6 +9,10 @@ class Job extends Model
 {
     protected $table = 'jobs';
 
+    protected $fillable = [
+        'reserved_at',
+    ];
+
     /*
      *--------------------------------------------------------------------------
      * Mutators
@@ -18,8 +22,11 @@ class Job extends Model
     {
         return Attribute::make(
             get: function () {
-
-                return 'waiting';
+                if ($this->reserved_at) {
+                    return 'running';
+                } else {
+                    return 'waiting';
+                }
             },
         );
     }

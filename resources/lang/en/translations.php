@@ -14,8 +14,10 @@ return [
     'running' => 'Running',
     'waiting' => 'Waiting',
     'status' => 'Status',
+    'attempts' => 'Attempts',
     'name' => 'Name',
     'queue' => 'Queue',
     'progress' => 'Progress',
     'started_at' => 'Started at',
+    'created_at' => 'Created at',
 ];

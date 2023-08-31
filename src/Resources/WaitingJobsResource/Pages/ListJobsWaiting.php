@@ -1,14 +1,14 @@
 <?php
 
-namespace Adrolli\FilamentJobManager\Resources\JobsWaitingResource\Pages;
+namespace Adrolli\FilamentJobManager\Resources\WaitingJobsResource\Pages;
 
-use Adrolli\FilamentJobManager\Resources\JobsWaitingResource;
-use Adrolli\FilamentJobManager\Resources\JobsWaitingResource\Widgets\JobsWaitingOverview;
+use Adrolli\FilamentJobManager\Resources\WaitingJobsResource;
+use Adrolli\FilamentJobManager\Resources\WaitingJobsResource\Widgets\JobsWaitingOverview;
 use Filament\Resources\Pages\ListRecords;
 
 class ListJobsWaiting extends ListRecords
 {
-    public static string $resource = JobsWaitingResource::class;
+    public static string $resource = WaitingJobsResource::class;
 
     public function getActions(): array
     {
