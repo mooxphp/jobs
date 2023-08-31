@@ -11,6 +11,7 @@ return [
     'succeeded' => 'Succeeded',
     'failed' => 'Failed',
     'running' => 'Running',
+    'waiting' => 'Waiting',
     'status' => 'Status',
     'name' => 'Name',
     'queue' => 'Queue',

@@ -20,7 +20,6 @@ class JobManagerProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
         Queue::before(static function (JobProcessing $event) {
             self::jobStarted($event->job);
         });
@@ -78,7 +77,7 @@ class JobManagerProvider extends ServiceProvider
     /**
      * Finish Queue Monitoring for Job.
      */
-    protected static function jobFinished(JobContract $job, bool $failed = false, ?\Throwable $exception = null): void
+    protected static function jobFinished(JobContract $job, bool $failed = false, \Throwable $exception = null): void
     {
         $monitor = JobManager::query()
             ->where('job_id', self::getJobId($job))
