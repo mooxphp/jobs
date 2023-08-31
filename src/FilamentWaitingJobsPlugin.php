@@ -7,7 +7,7 @@ use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Filament\Support\Concerns\EvaluatesClosures;
 
-class FilamentJobManagerPlugin implements Plugin
+class FilamentWaitingJobsPlugin implements Plugin
 {
     use EvaluatesClosures;
 
@@ -66,7 +66,7 @@ class FilamentJobManagerPlugin implements Plugin
      */
     public function getId(): string
     {
-        return 'filament-jobs';
+        return 'filament-jobs_waiting';
     }
 
     /**
@@ -108,7 +108,7 @@ class FilamentJobManagerPlugin implements Plugin
      */
     public function getResource(): string
     {
-        return $this->resource ?? config('filament-job-manager.resources.jobs.resource');
+        return $this->resource ?? config('filament-job-manager.resources.jobs_waiting.resource');
     }
 
     /**
@@ -126,7 +126,7 @@ class FilamentJobManagerPlugin implements Plugin
      */
     public function getLabel(): ?string
     {
-        return $this->evaluate($this->label) ?? config('filament-job-manager.resources.jobs.label');
+        return $this->evaluate($this->label) ?? config('filament-job-manager.resources.jobs_waiting.label');
     }
 
     /**
@@ -144,7 +144,7 @@ class FilamentJobManagerPlugin implements Plugin
      */
     public function getPluralLabel(): ?string
     {
-        return $this->evaluate($this->pluralLabel) ?? config('filament-job-manager.resources.jobs.plural_label');
+        return $this->evaluate($this->pluralLabel) ?? config('filament-job-manager.resources.jobs_waiting.plural_label');
     }
 
     /**
@@ -162,7 +162,7 @@ class FilamentJobManagerPlugin implements Plugin
      */
     public function getNavigationGroup(): ?string
     {
-        return $this->navigationGroup ?? config('filament-job-manager.resources.jobs.navigation_group');
+        return $this->navigationGroup ?? config('filament-job-manager.resources.jobs_waiting.navigation_group');
     }
 
     /**
@@ -180,7 +180,7 @@ class FilamentJobManagerPlugin implements Plugin
      */
     public function getNavigationIcon(): ?string
     {
-        return $this->navigationIcon ?? config('filament-job-manager.resources.jobs.navigation_icon');
+        return $this->navigationIcon ?? config('filament-job-manager.resources.jobs_waiting.navigation_icon');
     }
 
     /**
@@ -198,7 +198,7 @@ class FilamentJobManagerPlugin implements Plugin
      */
     public function getNavigationSort(): ?int
     {
-        return $this->navigationSort ?? config('filament-job-manager.resources.jobs.navigation_sort');
+        return $this->navigationSort ?? config('filament-job-manager.resources.jobs_waiting.navigation_sort');
     }
 
     /**
@@ -216,7 +216,7 @@ class FilamentJobManagerPlugin implements Plugin
      */
     public function getNavigationCountBadge(): ?bool
     {
-        return $this->navigationCountBadge ?? config('filament-job-manager.resources.jobs.navigation_count_badge');
+        return $this->navigationCountBadge ?? config('filament-job-manager.resources.jobs_waiting.navigation_count_badge');
     }
 
     /**
@@ -234,7 +234,7 @@ class FilamentJobManagerPlugin implements Plugin
      */
     public function shouldRegisterNavigation(): bool
     {
-        return $this->navigation ?? config('filament-job-manager.resources.jobs.enabled');
+        return $this->navigation ?? config('filament-job-manager.resources.jobs_waiting.enabled');
     }
 
     /**
