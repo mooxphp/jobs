@@ -4,8 +4,8 @@ namespace Adrolli\FilamentJobManager\Resources;
 
 use Adrolli\FilamentJobManager\FilamentJobsWaitingPlugin;
 use Adrolli\FilamentJobManager\Models\Job;
-use Adrolli\FilamentJobManager\Resources\JobsWaitingResource\Pages\ListJobs;
-use Adrolli\FilamentJobManager\Resources\JobsWaitingResource\Widgets\JobStatsOverview;
+use Adrolli\FilamentJobManager\Resources\JobsWaitingResource\Pages\ListJobsWaiting;
+use Adrolli\FilamentJobManager\Resources\JobsWaitingResource\Widgets\JobsWaitingOverview;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -57,7 +57,7 @@ class JobsWaitingResource extends Resource
                         'waiting' => 'success',
                         'failed' => 'danger',
                     }),
-                TextColumn::make('name')
+                TextColumn::make('display_name')
                     ->label(__('filament-job-manager::translations.name'))
                     ->sortable(),
                 TextColumn::make('queue')
@@ -89,14 +89,14 @@ class JobsWaitingResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ListJobs::route('/'),
+            'index' => ListJobsWaiting::route('/'),
         ];
     }
 
     public static function getWidgets(): array
     {
         return [
-            JobStatsOverview::class,
+            JobsWaitingOverview::class,
         ];
     }
 

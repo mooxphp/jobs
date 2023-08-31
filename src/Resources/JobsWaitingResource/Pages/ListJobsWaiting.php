@@ -2,13 +2,13 @@
 
 namespace Adrolli\FilamentJobManager\Resources\JobsWaitingResource\Pages;
 
-use Adrolli\FilamentJobManager\Models\JobManager;
-use Adrolli\FilamentJobManager\Resources\JobsResource\Widgets\JobStatsOverview;
+use Adrolli\FilamentJobManager\Resources\JobsWaitingResource;
+use Adrolli\FilamentJobManager\Resources\JobsWaitingResource\Widgets\JobsWaitingOverview;
 use Filament\Resources\Pages\ListRecords;
 
-class ListJobs extends ListRecords
+class ListJobsWaiting extends ListRecords
 {
-    public static string $resource = JobManager::class;
+    public static string $resource = JobsWaitingResource::class;
 
     public function getActions(): array
     {
@@ -18,7 +18,7 @@ class ListJobs extends ListRecords
     public function getHeaderWidgets(): array
     {
         return [
-            JobStatsOverview::class,
+            JobsWaitingOverview::class,
         ];
     }
 

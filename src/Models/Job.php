@@ -18,12 +18,22 @@ class Job extends Model
     {
         return Attribute::make(
             get: function () {
-                if ($this->isFinished()) {
-                    return $this->failed ? 'failed' : 'waiting';
-                }
 
-                return 'running';
+                return 'waiting';
             },
         );
+    }
+
+    /*
+     *--------------------------------------------------------------------------
+     * Methods
+     *--------------------------------------------------------------------------
+     */
+
+    public function getDisplayNameAttribute()
+    {
+        $payload = json_decode($this->attributes['payload'], true);
+
+        return $payload['displayName'] ?? null;
     }
 }

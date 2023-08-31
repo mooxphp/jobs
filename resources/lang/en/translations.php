@@ -6,6 +6,7 @@ return [
     'navigation_label' => 'Jobs',
     'navigation_group' => 'Job Manager',
     'total_jobs' => 'Total Jobs Executed',
+    'waiting_jobs' => 'Total Jobs Waiting',
     'execution_time' => 'Total Execution Time',
     'average_time' => 'Average Execution Time',
     'succeeded' => 'Succeeded',
