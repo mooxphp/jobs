@@ -12,7 +12,7 @@ class FilamentJobManagerServiceProvider extends PackageServiceProvider
         $package->name('filament-job-manager')
             ->hasConfigFile()
             ->hasTranslations()
-            ->hasMigration('create_filament-job-manager_table');
-
+            ->hasMigration('create_filament-job-manager_table')
+            ->hasRoutes('web');
     }
 }

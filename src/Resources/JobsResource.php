@@ -46,6 +46,8 @@ class JobsResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->poll('5s')
+            ->deferLoading()
             ->columns([
                 TextColumn::make('status')
                     ->badge()
