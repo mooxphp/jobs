@@ -1,12 +1,12 @@
 <?php
 
 return [
-    'breadcrumb' => 'Tasks',
-    'title' => 'Tasks',
-    'navigation_label' => 'Tasks',
-    'navigation_group' => 'Task Manager',
-    'total_jobs' => 'Anzahl ausgeführter Tasks',
-    'waiting_jobs' => 'Anzahl wartender Tasks',
+    'breadcrumb' => 'Jobs',
+    'title' => 'Jobs',
+    'navigation_label' => 'Jobs',
+    'navigation_group' => 'Job Manager',
+    'total_jobs' => 'Anzahl ausgeführter Jobs',
+    'waiting_jobs' => 'Anzahl wartender Jobs',
     'execution_time' => 'Gesamt Ausführungszeit',
     'average_time' => 'Durchschnittliche Ausführungszeit',
     'succeeded' => 'Erfolgreich',
