@@ -1,8 +1,6 @@
+![Moox Jobs](https://github.com/mooxphp/moox/raw/main/_other/art/banner/jobs.jpg)
 
-
-![filament-banner](./docs/filament-banner.jpg)
-
-# Filament Job Manager
+# Moox Jobs
 
 Filament panel for managing job queues including failed jobs and batches.
 
