@@ -1,12 +1,12 @@
 <?php
 
-namespace Adrolli\FilamentJobManager\Resources\JobBatchesResource\Pages;
+namespace Moox\Jobs\Resources\JobBatchesResource\Pages;
 
-use Filament\Resources\Pages\ListRecords;
 use Filament\Notifications\Notification;
 use Filament\Pages\Actions\Action;
+use Filament\Resources\Pages\ListRecords;
 use Illuminate\Support\Facades\Artisan;
-use Adrolli\FilamentJobManager\Resources\JobBatchesResource;
+use Moox\Jobs\Resources\JobBatchesResource;
 
 class ListJobBatches extends ListRecords
 {

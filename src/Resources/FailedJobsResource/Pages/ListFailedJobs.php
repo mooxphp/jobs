@@ -1,13 +1,13 @@
 <?php
 
-namespace Adrolli\FilamentJobManager\Resources\FailedJobsResource\Pages;
+namespace Moox\Jobs\Resources\FailedJobsResource\Pages;
 
-use Filament\Resources\Pages\ListRecords;
 use Filament\Notifications\Notification;
 use Filament\Pages\Actions\Action;
+use Filament\Resources\Pages\ListRecords;
 use Illuminate\Support\Facades\Artisan;
-use Adrolli\FilamentJobManager\Resources\FailedJobsResource;
-use Adrolli\FilamentJobManager\Models\FailedJob;
+use Moox\Jobs\Models\FailedJob;
+use Moox\Jobs\Resources\FailedJobsResource;
 
 class ListFailedJobs extends ListRecords
 {
