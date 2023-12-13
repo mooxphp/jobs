@@ -10,7 +10,7 @@ These two commmands are all you need to install the package:
 
 ```bash
 composer require moox/jobs
-php artisan mooxjobs:install (wip)
+php artisan mooxjobs:install
 ```
 
 Curious what the install command does? See manual installation below.
