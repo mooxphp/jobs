@@ -10,7 +10,7 @@ These two commmands are all you need to install the package:
 
 ```bash
 composer require moox/jobs
-php artisan mooxjobs:install
+php artisan mooxjobs:install (wip)
 ```
 
 Curious what the install command does? See manual installation below.
@@ -21,7 +21,7 @@ Curious what the install command does? See manual installation below.
 
 Monitor your running and finished jobs:
 
-![screenshot-jobs](./docs/screenshot-jobs.jpg)
+![https://github.com/mooxphp/moox/raw/main/_other/art/screenshot/jobs-jobs](./docs/screenshot-jobs.jpg)
 
 This table includes auto-pruning (7 days retention, configurable).
 
