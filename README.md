@@ -438,6 +438,68 @@ We plan to extend support for all queue drivers in the future. Watch the changel
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
+## Roadmap
+
+As there are many parts (plugins) of Moox that need to be developed, there is no ETA on the following ... let's call them ideas.
+
+### 3.0.1 Preparation
+
+- [ ] How to change the navigation? Delete or change existing modules in AdminPanelProvider
+- [ ] Add moox/core dependency to prepare for the new UI
+- [ ] Run all tests manually
+
+### 3.0.2 Stability
+
+The planned next release focuses on stability:
+
+- [ ] Improve update and install command, if necessary
+- [ ] Cleanup code: remove resource-config and unnecessary code for config
+- [ ] Improve testing: more jobs with different settings, batch with name etc.
+- [ ] Automate testing and deployment
+- [ ] Enable Logging with moox/logs, extend demojob and others
+- [ ] Cleanup, Pruning, Detention (and config / docs for that) - https://github.com/croustibat/filament-jobs-monitor/commit/4616bb4b2f82d542cbbfe88d5143c9c43ec5196b
+- [ ] Improve Batches, see https://laravel.com/docs/10.x/queues#inspecting-batches and https://cosme.dev/post/how-to-handle-longrunning-jobs-in-laravel
+- [ ] Auto-handle the never-ending Jobs running with the sync driver
+- [ ] Maybe there is an easy way to support Jobs waiting with Redis?
+### 3.1 UX
+
+The planned V3.1 release will contain major UX improvements and a new dashboard:
+
+- [ ] Create a nicer UI (Charts, Apex?) and Dashboard (the Monitor)
+- [ ] Test progress bars
+- [ ] Instead of delete, it is better to Cancel jobs, mark them as Cancelled
+- [ ] Distinct between Failed (retry) and finally Failed or show retries left (like attempts show, but more obvious)
+- [ ] Improve Batches (Partly failing / non failing, see if job belongs to a batch, click-filter the jobs of a batch)
+- [ ] Failed job resource does not show the job name
+- [ ] Add filters and simplify usage
+- [ ] Configuration UX, in Navigation
+
+### 3.2 Notifications
+
+- [ ] Notifications / Mailables for failed jobs and daily stats
+### 3.2 Redis
+
+- [ ] Improve the support for Redis
+- [ ] Add "soft" dependencies to installer (Horizon or Predis?)
+
+### 3.3 Queue Worker and Supervisor
+
+- [ ] Improve the support for queue workers and Supervisor
+
+### 3.4 SQS
+
+- [ ] Improve the support for Amazon SQS
+- [ ] Add "soft" dependencies to installer (AWS SDK for PHP)
+
+### 3.5 Beanstalkd
+
+- [ ] Improve the support for Beanstalkd
+### 3.6 API, Scheduler, CRON
+
+- [ ] API
+- [ ] Scheduler (maybe an additional plugin)
+- [ ] CRON (maybe an additional plugin)
+
 ## Contribute
 
 We welcome every contribution! It would be awesome, if you:
