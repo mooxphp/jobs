@@ -11,7 +11,7 @@ trait FormatSeconds
         $hours = 0;
         $minutes = 0;
         
-        if ($seconds > 0) {
+        if ($seconds > 60) {
             $days = floor($seconds / (60 * 60 * 24));
             $seconds -= $days * (60 * 60 * 24);
 
