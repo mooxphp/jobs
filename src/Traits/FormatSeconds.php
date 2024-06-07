@@ -6,11 +6,11 @@ trait FormatSeconds
 {
     public function formatSeconds(int $seconds): string
     {
-    
+
         $days = 0;
         $hours = 0;
         $minutes = 0;
-        
+
         if ($seconds > 60) {
             $days = floor($seconds / (60 * 60 * 24));
             $seconds -= $days * (60 * 60 * 24);
