@@ -21,7 +21,7 @@
         }
     ],
     "require": {
-        "moox/core": "^2.1.4"
+        "moox/core": "^2.1.6"
     },
     "require-dev": {},
     "autoload": {
