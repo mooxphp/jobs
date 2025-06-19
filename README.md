@@ -1,6 +1,6 @@
 <div class="filament-hidden">
 
-![Moox Jobs](https://github.com/mooxphp/moox/raw/main/art/banner/jobs.jpg)
+![Moox Jobs](banner.jpg)
 
 </div>
 
@@ -24,7 +24,7 @@ Curious what the install command does? See [manual installation](#manual-install
 ## Requirements
 
 | Plugin Version | Laravel Version | Filament Version | PHP Version |
-|----------------|-----------------|------------------|-------------|
+| -------------- | --------------- | ---------------- | ----------- |
 | 2.x            | 9.x             | 2.x              | \> 8.0      |
 | 3.x            | 10.x            | 3.x              | \> 8.1      |
 | 4.x            | 12.x            | 4.x              | \> 8.3      |
