@@ -2,20 +2,20 @@
 
 namespace Moox\Jobs\Resources;
 
-use Filament\Schemas\Schema;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Moox\Core\Forms\Components\ProgressColumn;
 use Moox\Core\Traits\Tabs\HasResourceTabs;
 use Moox\Jobs\Models\JobManager;
 use Moox\Jobs\Resources\JobsResource\Pages\ListJobs;
 use Moox\Jobs\Resources\JobsResource\Widgets\JobStatsOverview;
+use Moox\Progress\Forms\Components\ProgressColumn;
 use Override;
 
 class JobsResource extends Resource
@@ -24,7 +24,7 @@ class JobsResource extends Resource
 
     protected static ?string $model = JobManager::class;
 
-    protected static string | \BackedEnum | null $navigationIcon = null;
+    protected static string|\BackedEnum|null $navigationIcon = null;
 
     #[Override]
     public static function getNavigationIcon(): string
@@ -90,12 +90,28 @@ class JobsResource extends Resource
                     ->sortable(),
                 ProgressColumn::make('progress')
                     ->label(__('jobs::translations.progress'))
-                    ->extraHeaderAttributes(['style' => 'min-width: 200px'])
-                    // TODO: ->formatStateUsing(fn (string $state) => "{$state}%")
-                    // TODO: poll? extra poll needed?, color (test live), width etc.
-                    // IDEA: For adding width (of each separately) to the progress bar, fork (into core?)
-                    // SEE: https://github.com/ryangjchandler/filament-progress-column
-                    ->color(fn ($record): string => $record->progress > 99 ? 'success' : ''),
+                    ->formatStateUsing(function ($state, $record) {
+                        if ($record->failed) {
+                            return __('jobs::translations.failed');
+                        }
+
+                        return $state.'%';
+                    })
+                    ->color(function ($record) {
+                        if ($record->failed) {
+                            return 'rgb(239, 68, 68)';
+                        }
+
+                        $progress = $record->progress ?? 0;
+                        $gray = [156, 163, 175];
+                        $green = [34, 197, 94];
+                        $f = $progress / 100;
+                        $r = round($gray[0] + ($green[0] - $gray[0]) * $f);
+                        $g = round($gray[1] + ($green[1] - $gray[1]) * $f);
+                        $b = round($gray[2] + ($green[2] - $gray[2]) * $f);
+
+                        return "rgb({$r}, {$g}, {$b})";
+                    }),
                 TextColumn::make('started_at')
                     ->label(__('jobs::translations.started_at'))
                     ->since()

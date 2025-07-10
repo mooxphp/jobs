@@ -21,9 +21,11 @@
         }
     ],
     "require": {
-        "moox/core": "^3.1.2"
+        "moox/core": "self.version"
     },
-    "require-dev": {},
+    "require-dev": {
+        "moox/devtools": "self.version"
+    },
     "autoload": {
         "psr-4": {
             "Moox\\Jobs\\": "src"
