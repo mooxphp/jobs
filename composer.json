@@ -21,7 +21,7 @@
         }
     ],
     "require": {
-        "moox/core": "3.1.123"
+        "moox/core": "3.1.124"
     },
     "require-dev": {
         "moox/devtools": "self.version"
