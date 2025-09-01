@@ -21,7 +21,7 @@
         }
     ],
     "require": {
-        "moox/core": "3.1.124"
+        "moox/core": "3.1.125"
     },
     "require-dev": {
         "moox/devtools": "self.version"
@@ -35,6 +35,9 @@
         "sort-packages": true
     },
     "extra": {
+        "moox": {
+            "stability": "stable"
+        },
         "laravel": {
             "providers": [
                 "Moox\\Jobs\\JobsServiceProvider",
