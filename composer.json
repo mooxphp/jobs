@@ -21,10 +21,10 @@
         }
     ],
     "require": {
-        "moox/core": "5.0.0"
+        "moox/core": "5.0.1"
     },
     "require-dev": {
-        "moox/devtools": "5.0.0"
+        "moox/devtools": "5.0.1"
     },
     "autoload": {
         "psr-4": {
