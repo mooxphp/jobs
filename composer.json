@@ -21,10 +21,10 @@
         }
     ],
     "require": {
-        "moox/core": "4.0.0"
+        "moox/core": "5.0.0"
     },
     "require-dev": {
-        "moox/devtools": "self.version"
+        "moox/devtools": "5.0.0"
     },
     "autoload": {
         "psr-4": {
@@ -36,27 +36,24 @@
     },
     "extra": {
         "moox": {
-            "stability": "stable"
-        },
-        "laravel": {
-            "providers": [
-                "Moox\\Jobs\\JobsServiceProvider",
-                "Moox\\Jobs\\JobManagerProvider"
-            ],
-            "aliases": {
-                "JobMonitor": "Moox\\Jobs\\JobManagerProvider\\Facade"
-            }
-        },
-        "moox": {
+            "stability": "stable",
             "require": {
                 "spatie/laravel-medialibrary": {
                     "auto_publish": "spatie-jobs-config"
                 }
             },
             "install": {
-                "auto_migrate": "database/migrations",
+                "auto_migrate": [
+                    "database/migrations"
+                ],
+                "plugins": [
+                    "Moox\\Jobs\\Moox\\Plugins\\JobsPlugin",
+                    "Moox\\Jobs\\Moox\\Plugins\\JobsWaitingPlugin",
+                    "Moox\\Jobs\\Moox\\Plugins\\JobsFailedPlugin",
+                    "Moox\\Jobs\\Moox\\Plugins\\JobsBatchesPlugin"
+                ],
                 "seed": "database/seeders/JobsSeeder.php",
-                "auto_publish": "moox-jobs-config",
+                "auto_publish": "jobs-config",
                 "auto_entities": {
                     "Some Resource": true,
                     "Another Resource": null
@@ -66,12 +63,12 @@
                     "Another Class": "Moox\\Jobs\\AnotherClass"
                 },
                 "auto_run": {
-                    "Run this": "php artisan run:this",
-                    "Build the frontend": "npm run build",
-                    "Clear the cache": "php artisan cache:clear"
+                    "Run this": "",
+                    "Build the frontend": "",
+                    "Clear the cache": ""
                 },
                 "auto_runhere": {
-                    "Build the frontend": "npm run build"
+                    "Build the frontend": ""
                 }
             },
             "update": {
@@ -81,6 +78,15 @@
             "uninstall": {
                 "migrate": "database/migrations",
                 "remove": "moox-jobs-config"
+            }
+        },
+        "laravel": {
+            "providers": [
+                "Moox\\Jobs\\JobsServiceProvider",
+                "Moox\\Jobs\\JobManagerProvider"
+            ],
+            "aliases": {
+                "JobMonitor": "Moox\\Jobs\\JobManagerProvider\\Facade"
             }
         }
     },
